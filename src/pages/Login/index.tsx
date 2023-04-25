@@ -16,7 +16,7 @@ const schema = yup
       .required("Campo obrigatório"),
   })
   .required();
-
+  
 const Login = () => {
   const {
     control,
@@ -28,6 +28,8 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  
+  console.log(isValid)
   return (
     <Container>
       <LoginContainer>
@@ -49,7 +51,9 @@ const Login = () => {
             errorMessage={errors?.password?.message}
           />
           <Spacing />
-          <Button title="Entrar" />
+          {isValid ?<Button  cursor='pointer' pointer='fill' title="Entrar" />: 
+            <Button cursor='auto' pointer='stroke' title="Entrar" />
+          } 
         </Column>
       </LoginContainer>
     </Container>
@@ -57,3 +61,4 @@ const Login = () => {
 };
 
 export default Login;
+
